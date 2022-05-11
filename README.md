@@ -45,7 +45,9 @@ We could use here nx Workspace and create libraries but since the volume of this
 - just implementing the necessary things to show output similar to provided in assignment task
 - alot of things can be done in multiple ways to achieve the task but i ll implement features just to save time
 
-
+### Demo 
+<img width="1197" alt="image" src="https://user-images.githubusercontent.com/105328652/167950965-3d459c5f-94d9-4a13-8ef1-3224c13d051d.png">
+<img width="1230" alt="image" src="https://user-images.githubusercontent.com/105328652/167951092-5530a59f-013c-4237-a285-5533dc217a8b.png">
 
 ### Project Directory 
 
