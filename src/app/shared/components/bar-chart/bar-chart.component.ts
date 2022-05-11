@@ -19,10 +19,10 @@ export class BarChartComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input('tab') tab: TabModel;
 
   charts: any;
-  tabs: Observable<Array<TabModel>>;
+  tabs$: Observable<Array<TabModel>>;
 
-  loading: Observable<boolean> | undefined;
-  error: Observable<Error>;
+  loading$: Observable<boolean> | undefined;
+  error$: Observable<Error>;
   boundaries: [number, number] = [1, 8]
   chartData: any[] = [];
   slider: Slider;
@@ -44,25 +44,14 @@ export class BarChartComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.chartData = this.tab.chartData;
-    let slider = { ...this.tab.slider }
-    // this.store.dispatch(new AddBarChartAction({ customColors: [], data: this.chartData, tabId: this.tab.index, boudaries: [slider.value, slider.highValue] }));
-    this.tabs = this.store.select(store => store.tabs);
-
-
-
-    // this.store.dispatch(new AddChartActionSuccess({ customColors: [], data: this.chartData, tabId: 0, boudaries: [this.boundaries[0], this.boundaries[1]] }))
-
-
+    this.tabs$ = this.store.select(store => store.tabs);
     this.charts = this.store.select(store => store.barcharts);
     // this.loading = this.store.select(store => store.charts.loading);
     // this.error = this.store.select(store => store.charts.error);
     this.slider = (this.tab.slider) as Slider;
-
-
   }
 
-  ngOnDestroy(): void {
-  }
+  ngOnDestroy(): void { }
 
 
 

@@ -20,53 +20,29 @@ import { ChartState } from 'src/app/store/reducers/chart.reducer';
 })
 
 export class TabsContainerComponent implements OnInit {
-  tabs: Observable<Array<TabModel>>;
-  count: Observable<CountModel>;
-  charts: Observable<Array<ChartModel>>;
-  // chartsE: Observable<Array<ChartModel>>;
+  tabs$: Observable<Array<TabModel>>;
+  count$: Observable<CountModel>;
+  charts$: Observable<Array<ChartModel>>;
+  // chartsE$: Observable<Array<ChartModel>>;
+  active: number = 0;
   data: any[] = [84, 14, 234, 37, 64, 42, 197, 11].sort((a, b) => b - a).map((val, index) => {
     return { name: index + 1, value: val }
   })
-  constructor(private store: Store<AppState>) {
-
-  }
+  constructor(private store: Store<AppState>) { }
   ngOnInit(): void {
     // this.chartsE = this.store.select(store => store.charts.list)
-    this.charts = this.store.select(store => store.barcharts)
-    this.tabs = this.store.select(store => store.tabs);
-    this.count = this.store.pipe(select('count'));
-    // this.store.dispatch((new LoadChartAction({ customColors: [], data: [], tabId: 0, boudaries: [1, 8] })));
-    // this.chartsE.subscribe(p => {
-    //   if (!p.some(i => !Number.isInteger(i))) {
-    //     this.data = [...p];
-    //     this.data.sort((a: any, b: any) => b - a)
-    //       .map((val, index) => {
-    //         return { name: index + 1, value: val }
-    //       });
-    //   }
-    // });
+    this.charts$ = this.store.select(store => store.barcharts)
+    this.tabs$ = this.store.select(store => store.tabs);
+    this.count$ = this.store.pipe(select('count'));
   }
-
-  active: number = 0;
-
   close(event: MouseEvent, index: number, posIndex: number) {
-    debugger;
     this.store.dispatch(new DeleteTabAction(index));
     this.store.dispatch(new DeleteBarChartAction(index));
-    // this.tabs = this.tabs.filter(tab => tab.index !== index);
     // this.active = this.findPossibleFocusableIndex(this.tabs.length - 1, this.tabs)
-
     let num;
     this.decrement();
-    this.count.subscribe(counter => num = counter)
-    // this.tabs.subscribe(tabs => {
-    //   console.log this.findPossibleFocusableIndex(posIndex, tabs);
-    // })
+    this.count$.subscribe(counter => num = counter)
     this.active = posIndex - 1;
-
-
-    // Below is important here to here avoid refreshing 
-
     event.preventDefault();
     event.stopImmediatePropagation();
   }
@@ -79,28 +55,21 @@ export class TabsContainerComponent implements OnInit {
   }
   add(event: MouseEvent) {
     let num;
-    // this.tabs.filter(tab => {
-    //   if (tab.index == num) num = num + 1;
-    // });
     this.increment()
-    this.count.subscribe(counter => num = counter)
-    let s;
-    this.charts.subscribe(p => { s = p; return p; })
-
-
+    this.count$.subscribe(counter => num = counter)
     this.active = num;
     this.store.dispatch(new AddTabAction({
       index: num, name: 'TAB', isActive: true,
       defaultMessage: ' No Charts Available please click on the "+" button to add a new chart',
       slider: { ceil: 8, floor: 1, highValue: 8, value: 1 }, isChartAdded: false, chartData: this.data
     }));
-    this.tabs.subscribe(tabs => {
+    this.tabs$.subscribe(tabs => {
       num = tabs.length - 1;
     })
     this.active = num;
     event.preventDefault();
   }
-  tabChange(tab) { }
+
 
   increment() {
     this.store.dispatch(new Increment());
@@ -109,7 +78,6 @@ export class TabsContainerComponent implements OnInit {
     this.store.dispatch(new Decrement());
   }
   addChartClick(tab: TabModel, posIndex: number) {
-    debugger;
     this.store.dispatch(new UpdateTabAction({
       index: tab.index,
       defaultMessage: tab.defaultMessage,
@@ -125,6 +93,7 @@ export class TabsContainerComponent implements OnInit {
     // this.store.dispatch(new AddChartActionSuccess({ customColors: [], data: this.chartData, tabId: 0, boudaries: [this.boundaries[0], this.boundaries[1]] }))
 
   }
+  tabChange(tab) { }
 
 }
 

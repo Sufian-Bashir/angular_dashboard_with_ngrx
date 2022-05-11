@@ -2,14 +2,13 @@
     <div class="col-12 pull-left">
         <div class="tabs-container">
             <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-                <li *ngFor="let tab of  (tabs | async );index as i   " [ngbNavItem]="i" (click)="tabChange(tab)">
+                <li *ngFor="let tab of  (tabs$ | async );index as i   " [ngbNavItem]="i" (click)="tabChange(tab)">
                     <a ngbNavLink>
                         {{ tab.name + (i+1)}}
                         <span *ngIf="tab.index!=0" (click)="close($event, tab.index,i)">
                             <i class="bi bi-x"></i></span>
                     </a>
                     <ng-template ngbNavContent *ngIf="tab.isChartAdded">
-                        <p>Tab {{ i + 1}} content</p>
                         <div class="">
                             <app-bar-chart [tab]="tab"></app-bar-chart>
                         </div>
