@@ -33,9 +33,8 @@ Run `ng build`
 
 Run `ng test` 
 
-## Running end-to-end tests
+ ![image](https://user-images.githubusercontent.com/105328652/167950630-d85e9b6a-7d1b-4202-a826-3ab2e574c0df.png)
 
-Run `ng e2e` 
 ### Important Notes 
 We could use here nx Workspace and create libraries but since the volume of this project is quite small so i would like to keep it very simple.
 
