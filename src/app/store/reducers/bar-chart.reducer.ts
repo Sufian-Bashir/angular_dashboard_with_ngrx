@@ -4,7 +4,7 @@ import { AddTabAction, TabAction, TabActionTypes } from "../actions/tab.actions"
 import { ChartModel } from "../models/chart.model";
 
 
-const defaulState: Array<ChartModel> = [
+export const defaulState: Array<ChartModel> = [
     {
         customColors: [
             { name: '1', value: 'green' }

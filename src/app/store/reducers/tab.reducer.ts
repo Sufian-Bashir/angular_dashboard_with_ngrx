@@ -3,11 +3,11 @@ import { AddTabAction, TabAction, TabActionTypes } from "../actions/tab.actions"
 import { TabModel } from "../models/tab.model";
 
 
-const data: any[] = [84, 14, 234, 37, 64, 42, 197, 11].sort((a, b) => b - a).map((val, index) => {
+export const data: any[] = [84, 14, 234, 37, 64, 42, 197, 11].sort((a, b) => b - a).map((val, index) => {
     return { name: index + 1, value: val }
 })
 
-const defaulTab: Array<TabModel> = [
+export const defaulTab: Array<TabModel> = [
     {
         index: 0,
         name: 'TAB',
