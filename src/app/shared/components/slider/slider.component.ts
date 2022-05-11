@@ -40,7 +40,6 @@ export class SliderComponent implements OnInit {
   }
 
   valueChange($event) {
-    debugger;
     let obj = { ...this.tab };
     obj.slider = { ...this.tab.slider };
     obj.slider.highValue = $event.highValue;

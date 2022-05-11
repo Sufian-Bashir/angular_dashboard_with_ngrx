@@ -40,7 +40,6 @@ export function TabReducer(state: Array<TabModel> | undefined = defaulTab, actio
 
 
         case TabActionTypes.DELETE_TAB:
-            debugger;
             return state.filter(elem => elem.index !== action.pyaload);
 
 
