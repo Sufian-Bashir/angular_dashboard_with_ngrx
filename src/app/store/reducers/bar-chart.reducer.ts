@@ -41,20 +41,16 @@ export function BarChartReducer(state: Array<ChartModel> | undefined = defaulSta
             let exists = state.some(s => s.tabId == (action.pyaload as ChartModel).tabId);
             if (exists) {
                 state.forEach((p, index) => {
-                    console.log((action.pyaload as ChartModel).tabId)
 
                     if (p.tabId === (action.pyaload as ChartModel).tabId) {
                         p.data.forEach((dataItem, i) => {
                             colors.push(getColor(i, (action.pyaload as ChartModel).boudaries));
                         })
-                        // console.log(p, { ...p, index: p.index + 1 })
                         payload = { ...p, data: (action.pyaload as ChartModel).data, customColors: colors } as ChartModel;
-                        console.log(payload, state)
                         colors = [];
                         return;
                     }
                 });
-                console.log('colors', colors)
             } else {
                 colors = [];
                 let payld = (action.pyaload) as ChartModel;
@@ -67,7 +63,6 @@ export function BarChartReducer(state: Array<ChartModel> | undefined = defaulSta
                     customColors: colors
                 }
             }
-            // console.log(state, payload)
 
             return payload ? [...state, payload] : [...state, action.pyaload];
         case BarChartActionTypes.DELETE_BAR_CHART:
@@ -89,14 +84,12 @@ export function BarChartReducer(state: Array<ChartModel> | undefined = defaulSta
 
             if (exist) {
                 newState = [...state].map((p, index) => {
-                    console.log((action.pyaload as ChartModel).tabId)
 
                     if (p.tabId === (action.pyaload as ChartModel).tabId) {
                         colors_u = [];
                         p.data.forEach((dataItem, i) => {
                             colors_u.push(getColor_u(i, (action.pyaload as ChartModel).boudaries));
                         })
-                        // console.log(p, { ...p, index: p.index + 1 })
                         return { ...p, data: (action.pyaload as ChartModel).data, customColors: colors_u } as ChartModel;
 
                     } else {
@@ -104,9 +97,6 @@ export function BarChartReducer(state: Array<ChartModel> | undefined = defaulSta
                     }
                 });
             }
-            // console.log(state, payload)
-            // debugger;
-            console.log('new State', state, newState)
 
             return newState && newState.length > 0 ? newState : state;
         default:

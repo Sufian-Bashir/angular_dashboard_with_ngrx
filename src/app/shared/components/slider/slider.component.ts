@@ -31,7 +31,6 @@ export class SliderComponent implements OnInit {
 
       }
     }))
-    console.log(this.tab)
   }
 
   sliderOptions(slider: Slider): Options {
@@ -45,11 +44,11 @@ export class SliderComponent implements OnInit {
   }
 
   valueChange($event) {
+    debugger;
     let obj = { ...this.tab };
     obj.slider = { ...this.tab.slider };
     obj.slider.highValue = $event.highValue;
     obj.slider.value = $event.value;
-    console.log(this.tab, obj.slider, $event.value)
     this.store.dispatch(new UpdateTabAction((obj)));
     this.store.dispatch(new UpdateBarChartAction({ customColors: [], data: this.tab.chartData, tabId: this.tab.index, boudaries: [obj.slider.value, obj.slider.highValue] }));
 

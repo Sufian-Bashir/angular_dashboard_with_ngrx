@@ -45,7 +45,6 @@ export class TabsContainerComponent implements OnInit {
     //       });
     //   }
     // });
-    // console.log(this.data) 
   }
 
   active: number = 0;
@@ -56,11 +55,10 @@ export class TabsContainerComponent implements OnInit {
     this.store.dispatch(new DeleteBarChartAction(index));
     // this.tabs = this.tabs.filter(tab => tab.index !== index);
     // this.active = this.findPossibleFocusableIndex(this.tabs.length - 1, this.tabs)
-    // console.log(this.active)
+
     let num;
     this.decrement();
     this.count.subscribe(counter => num = counter)
-    this.charts.subscribe(p => { console.log('charts', p); })
     // this.tabs.subscribe(tabs => {
     //   console.log this.findPossibleFocusableIndex(posIndex, tabs);
     // })
@@ -89,7 +87,6 @@ export class TabsContainerComponent implements OnInit {
     let s;
     this.charts.subscribe(p => { s = p; return p; })
 
-    console.log('count', num, s)
 
     this.active = num;
     this.store.dispatch(new AddTabAction({
@@ -98,9 +95,9 @@ export class TabsContainerComponent implements OnInit {
       slider: { ceil: 8, floor: 1, highValue: 8, value: 1 }, isChartAdded: false, chartData: this.data
     }));
     this.tabs.subscribe(tabs => {
-      this.active = tabs.length - 1;
+      num = tabs.length - 1;
     })
-
+    this.active = num;
     event.preventDefault();
   }
   tabChange(tab) { }

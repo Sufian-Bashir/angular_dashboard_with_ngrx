@@ -48,10 +48,8 @@ export function ChartReducer(state: ChartState = defaultChart, action: ChartActi
             let exists = state.list.some(s => s.tabId == action.payload);
             if (exists) {
                 state.list.forEach((p, index) => {
-                    console.log(action.payload)
                     if (p.tabId === action.payload) {
                         // payload = { ...p, customColors:,index: p.index + 1 } as TabModel;
-                        // console.log(payload, state)
                         return;
                     }
                 });

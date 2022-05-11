@@ -27,18 +27,14 @@ export function TabReducer(state: Array<TabModel> | undefined = defaulTab, actio
             let exists = state.some(s => s.index == (action.pyaload as TabModel).index);
             if (exists) {
                 state.forEach((p, index) => {
-                    console.log((action.pyaload as TabModel).index)
                     if (p.index === (action.pyaload as TabModel).index) {
-                        // console.log(p, { ...p, index: p.index + 1 })
                         // payload = { ...p, index: p.index + 1 } as TabModel;
                         payload = { ...p, index: p.index + 1, isChartAdded: false } as TabModel;
 
-                        // console.log(payload, state)
                         return;
                     }
                 });
             }
-            // console.log(state, payload)
 
             return payload ? [...state, payload] : [...state, action.pyaload];
 
@@ -54,19 +50,14 @@ export function TabReducer(state: Array<TabModel> | undefined = defaulTab, actio
             let newState = [];
             if (exist > -1) {
                 newState = [...state].map((p, index) => {
-                    console.log((action.pyaload as TabModel).index)
                     if (p.index === (action.pyaload as TabModel).index) {
-                        // console.log(p, { ...p, index: p.index + 1 })
                         let ap = (action.pyaload) as TabModel;
                         return { ...p, slider: ap.slider, isActive: ap.isActive, isChartAdded: ap.isChartAdded } as TabModel;
-                        // console.log(payload, state)
-                        // return;
                     } else {
                         return { ...p };
                     }
                 });
             }
-            console.log(state, newState)
 
             return newState && newState.length > 0 ? newState : state;
         default:

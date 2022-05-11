@@ -33,11 +33,9 @@ export class BarChartComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.charts = this.store.select(store => store.barcharts)
     this.charts.subscribe(charts => {
-      // charts.forEach(p => { console.log(charts) })
       charts.map(chart => {
         if (chart.tabId == this.tab.index) {
           this.customColors = chart.customColors;
-          console.log('custome colors', this.customColors)
         }
       })
     })
