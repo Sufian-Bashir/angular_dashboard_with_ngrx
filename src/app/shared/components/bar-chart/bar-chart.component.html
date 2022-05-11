@@ -1,0 +1,17 @@
+<div class=" row">
+    <div class="col-8 pull-left">
+
+        <ngx-charts-bar-vertical [view]="[1000,400]" [results]="chartData" [xAxisLabel]="'Activity'"
+            [legendTitle]="'Activity Chart'" [yAxisLabel]="'Frequency'" [showGridLines]="false" [legend]="false"
+            [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxis]="true" [yAxis]="true" [gradient]="true"
+            [view]="[700,400]" [customColors]="customColors">
+        </ngx-charts-bar-vertical>
+
+
+    </div>
+    <div class="slider col-4 pull-right">
+        <app-slider [tab]="tab"></app-slider>
+
+    </div>
+
+</div>
