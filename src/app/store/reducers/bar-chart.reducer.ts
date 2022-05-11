@@ -43,10 +43,11 @@ export function BarChartReducer(state: Array<ChartModel> | undefined = defaulSta
                 state.forEach((p, index) => {
 
                     if (p.tabId === (action.pyaload as ChartModel).tabId) {
+                        const actionPayload = (action.pyaload as ChartModel)
                         p.data.forEach((dataItem, i) => {
-                            colors.push(getColor(i, (action.pyaload as ChartModel).boudaries));
+                            colors.push(getColor(i, actionPayload.boudaries));
                         })
-                        payload = { ...p, data: (action.pyaload as ChartModel).data, customColors: colors } as ChartModel;
+                        payload = { ...p, data: actionPayload.data, customColors: colors, boudaries: actionPayload.boudaries } as ChartModel;
                         colors = [];
                         return;
                     }
@@ -60,7 +61,8 @@ export function BarChartReducer(state: Array<ChartModel> | undefined = defaulSta
                 })
                 payload = {
                     ...payld,
-                    customColors: colors
+                    customColors: colors,
+                    boudaries: payld.boudaries
                 }
             }
 
@@ -84,13 +86,13 @@ export function BarChartReducer(state: Array<ChartModel> | undefined = defaulSta
 
             if (exist) {
                 newState = [...state].map((p, index) => {
-
-                    if (p.tabId === (action.pyaload as ChartModel).tabId) {
+                    const actionPayload = (action.pyaload as ChartModel);
+                    if (p.tabId === actionPayload.tabId) {
                         colors_u = [];
                         p.data.forEach((dataItem, i) => {
-                            colors_u.push(getColor_u(i, (action.pyaload as ChartModel).boudaries));
+                            colors_u.push(getColor_u(i, actionPayload.boudaries));
                         })
-                        return { ...p, data: (action.pyaload as ChartModel).data, customColors: colors_u } as ChartModel;
+                        return { ...p, data: (action.pyaload as ChartModel).data, customColors: colors_u, boudaries: actionPayload.boudaries } as ChartModel;
 
                     } else {
                         return p;

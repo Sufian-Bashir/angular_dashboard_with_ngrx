@@ -25,7 +25,6 @@ export class BarChartComponent implements OnInit, AfterViewInit, OnDestroy {
   error$: Observable<Error>;
   boundaries: [number, number] = [1, 8]
   chartData: any[] = [];
-  slider: Slider;
   customColors: any[] = [];
   constructor(private store: Store<AppState>) {
 
@@ -48,7 +47,7 @@ export class BarChartComponent implements OnInit, AfterViewInit, OnDestroy {
     this.charts = this.store.select(store => store.barcharts);
     // this.loading = this.store.select(store => store.charts.loading);
     // this.error = this.store.select(store => store.charts.error);
-    this.slider = (this.tab.slider) as Slider;
+    // this.slider = (this.tab.slider) as Slider;
   }
 
   ngOnDestroy(): void { }
