@@ -37,8 +37,6 @@ describe('--------------   STORE --> BAR CHART REDUCER -------------------', () 
         expect(state.pop()).toEqual(payload);
     });
 
-
-
     it('SHOULD Delete Default state', () => {
         const initialState = fromReducer.defaulState;
 
