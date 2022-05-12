@@ -1,11 +1,11 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { NgbNavModule } from "@ng-bootstrap/ng-bootstrap";
+import { MockStore, provideMockStore } from "@ngrx/store/testing";
 
-import { TabsContainerComponent } from './tabs-container.component';
+import { TabsContainerComponent } from "./tabs-container.component";
 
-describe('TabsContainerComponent', () => {
+describe("TabsContainerComponent", () => {
   let component: TabsContainerComponent;
   let fixture: ComponentFixture<TabsContainerComponent>;
   let mockStore: MockStore;
@@ -16,8 +16,7 @@ describe('TabsContainerComponent', () => {
       imports: [NgbNavModule],
       providers: [provideMockStore()],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    })
-      .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -27,7 +26,7 @@ describe('TabsContainerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create tab component', () => {
+  it("should create tab component", () => {
     expect(component).toBeTruthy();
   });
 });

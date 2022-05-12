@@ -1,17 +1,14 @@
-import { Action } from '@ngrx/store';
+import { Action } from "@ngrx/store";
 
 export enum CounterActionTypes {
-    Increment = '[Counter] Increment',
-    Decrement = '[Counter] Decrement'
+  Increment = "[Counter] Increment",
+  Decrement = "[Counter] Decrement",
 }
 
 export class Increment implements Action {
-    readonly type = CounterActionTypes.Increment;
+  readonly type = CounterActionTypes.Increment;
 }
 
 export class Decrement implements Action {
-    readonly type = CounterActionTypes.Decrement;
+  readonly type = CounterActionTypes.Decrement;
 }
-
-
-

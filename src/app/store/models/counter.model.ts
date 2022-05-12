@@ -1,1 +1,3 @@
-export interface CountModel { count: number }
+export interface CountModel {
+  count: number;
+}

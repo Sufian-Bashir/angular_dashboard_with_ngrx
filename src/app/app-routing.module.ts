@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { TabsContainerComponent } from './pages/tabs-container/tabs-container.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { TabsContainerComponent } from "./pages/tabs-container/tabs-container.component";
 
 const routes: Routes = [
   {
-    path: '',
-    component: TabsContainerComponent
-  }
+    path: "",
+    component: TabsContainerComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

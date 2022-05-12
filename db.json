@@ -1,14 +1,5 @@
 {
-  "chartData": [
-    84,
-    14,
-    234,
-    37,
-    64,
-    42,
-    197,
-    11
-  ],
+  "chartData": [84, 14, 234, 37, 64, 42, 197, 11],
   "chartsData": {
     "tabId": 0,
     "customColors": [],

@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { NavHeaderComponent } from './nav-header.component';
+import { NavHeaderComponent } from "./nav-header.component";
 
-describe('NavHeaderComponent', () => {
+describe("NavHeaderComponent", () => {
   let component: NavHeaderComponent;
   let fixture: ComponentFixture<NavHeaderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NavHeaderComponent ]
-    })
-    .compileComponents();
+      declarations: [NavHeaderComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('NavHeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
